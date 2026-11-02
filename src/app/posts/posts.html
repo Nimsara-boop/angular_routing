@@ -1,24 +1,25 @@
 <div class="content">
-<h1>Here are all our posts</h1>
-    <ul>
-      <li>
-        <a [routerLink]="['/posts', 1]">
-          Learning Angular
-        </a>
-      </li>
+  <h1>Here are all our posts</h1>
+  <ul>
+    <li>
+      <a [routerLink]="['/posts', 1]"> Learning Angular </a>
+    </li>
 
-      <li>
-        <a [routerLink]="['/posts', 2]">
-          Understanding TypeScript
-        </a>
-      </li>
+    <li>
+      <a [routerLink]="['/posts', 2]"> Understanding TypeScript </a>
+    </li>
 
-      <li>
-        <a [routerLink]="['/posts', 3]">
-          Working with Django
-        </a>
-      </li>
-    </ul>
+    <li>
+      <a [routerLink]="['/posts', 3]"> Working with Django </a>
+    </li>
+  </ul>
+
+  <h2>View all our other posts here!</h2>
+  @for (post of postsList(); track post.id) {
+    <div class="post">
+      <h3 class="post-title">{{ post.title }}</h3>
+      <p class="post-author">{{ post.id }}</p>
+    </div>
+  }
 </div>
-  `
-
+`

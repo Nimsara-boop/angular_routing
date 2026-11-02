@@ -16,3 +16,12 @@ li:hover{
     color: white;
     cursor:pointer; 
 }
+
+.post-title{
+    font-size: 18px;
+    font-weight: bold;
+}
+.post-author{
+    font-size: 14px;
+    color: #555;
+}

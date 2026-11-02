@@ -1,5 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { map } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
+
 
 @Component({
   selector: 'app-post-details',
@@ -10,23 +13,14 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 export class PostDetails {
   private route = inject(ActivatedRoute);
 
-  id = Number(this.route.snapshot.paramMap.get('id'));
-  nextId = Number(this.id) + 1;
-  prevID = Number(this.id) - 1;
+  id = toSignal(this.route.paramMap.pipe(
+    map(params => Number(params.get('id')))
+  ), {initialValue: 1}
+  );
+  nextId = computed(() => this.id() + 1);
+  prevId = computed(() => this.id() - 1);
 
-  prevPostAvailable = this.checkPrevAvailability(this.id);
-  nextPostAvailable = this.checkNextAvailability(this.id);
+  prevPostAvailable = computed(() => this.id()>1);
+  nextPostAvailable = computed(() => this.id() < 3);
 
-  checkPrevAvailability(id: number): boolean {
-    if (id == 1) {
-      return false;
-    }
-    return true;
-  }
-  checkNextAvailability(id: number): boolean {
-    if (id == 3) {
-      return false;
-    }
-    return true;
-  }
 }

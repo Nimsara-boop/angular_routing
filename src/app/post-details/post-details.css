@@ -1,0 +1,18 @@
+.content{
+    padding: 20px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    width:100%;
+}
+.buttons button{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color:black;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+}

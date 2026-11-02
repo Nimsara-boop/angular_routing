@@ -1,0 +1,17 @@
+<div class="content">
+  <h2>Post Details</h2>
+  <p>Post Id : {{ id }}</p>
+
+  <div class="buttons">
+    <button [routerLink]="['posts', prevID]" id="prevBtn">
+      @if (prevPostAvailable) {
+        Previous Post
+      }
+    </button>
+    <button [routerLink]="['posts', nextId]" id="nextBtn">
+      @if (nextPostAvailable) {
+        Next Post
+      }
+    </button>
+  </div>
+</div>
